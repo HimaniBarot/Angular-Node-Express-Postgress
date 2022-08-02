@@ -1,5 +1,25 @@
-<button routerLink="create-todo">CREATE</button>
-<div *ngFor="let todo of todoList">
-    <p>{{ todo.title }}</p>
-    <p>{{ todo.content }}</p>
-</div>
+<button routerLink="create-todo" class="btn btn-primary">CREATE</button>
+<!-- <div *ngFor="let todo of todoList">
+    <p>{{ todo.todo_id }}</p>
+    <p>{{ todo.description }}</p>
+    <button type="button" (click)="deleteTodo(todo.todo_id)">DELETE</button>
+</div> -->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of todoList">
+            <th scope="row">{{ todo.todo_id }}</th>
+            <td>{{ todo.description }}</td>
+            <td>
+                <button type="button" class="btn btn-warning me-2" (click)="editTodo(todo.todo_id)">EDIT</button>
+                <button type="button" class="btn btn-danger" (click)="deleteTodo(todo.todo_id)">DELETE</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

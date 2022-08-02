@@ -1,13 +1,15 @@
-<form>
-    <div>
-        <input type="text" placeholder="Title" />
-    </div>
-    <br>
-    <div>
-        <input type="text" placeholder="Content" />
-    </div>
-    <br>
-    <div>
-        <button>ADD</button>
-    </div>
+<form [formGroup]="todoForm" (ngSubmit)="addToDo()">
+    <!-- <div class="mb-4">
+        <input type="text" placeholder="Title" formControlName="description" />
+    </div> -->
+
+    <div class="mb-3 d-flex align-items-center justify-content-between">
+        <div>
+            <label for="exampleInputEmail1" class="form-label">Todo</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="description">
+        </div>
+        <div class="">
+            <button class="btn btn-success">ADD</button>
+        </div>
+      </div>
 </form>

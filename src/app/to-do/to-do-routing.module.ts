@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'create-todo',
         component: CreateToDoComponent
       },
+      {
+        path: 'edit-todo/:id',
+        component: CreateToDoComponent
+      },
     ]
   },
 ];

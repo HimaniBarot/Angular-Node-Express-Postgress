@@ -6,6 +6,7 @@ import { ToDoComponent } from './to-do.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { CreateToDoComponent } from './create-to-do/create-to-do.component';
 import { ToDoService } from './services/to-do.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ToDoService } from './services/to-do.service';
   ],
   imports: [
     CommonModule,
-    ToDoRoutingModule
+    ToDoRoutingModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ToDoComponent,
