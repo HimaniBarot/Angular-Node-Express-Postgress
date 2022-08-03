@@ -1,0 +1,17 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+}
+
+.header {
+    flex: 0 0 80px;
+    height: 80px;
+    background-color: rgb(119, 156, 181);
+}
+.active{
+    color: aquamarine;
+}
