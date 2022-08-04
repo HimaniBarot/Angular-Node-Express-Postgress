@@ -1,11 +1,17 @@
-<form class="w-50 m-auto">
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+<div class="h-100 d-flex flex-column align-items-center justify-content-center">
+    <h1>SIGNUP</h1>
+    <form class="w-50" [formGroup]="signupForm">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+        </div>
+        <button type="submit" class="btn btn-success" (click)="onSignup()">SIGNUP</button>
+    </form>
+    <div>
+        <p class="text-center">Already registerd ? <a routerLink="/login">Login</a></p>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <button type="submit" class="btn btn-primary">SIGNUP</button>
-</form>
+</div>

@@ -6,22 +6,31 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MasterComponent } from './master/master.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    MasterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    SignupComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class CoreModule { }

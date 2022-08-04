@@ -8,6 +8,7 @@ const router = express.Router();
 // =============================== SIGNUP ===================================== //
 router.post("/signup", async (req, res) => {
     try {
+        let userDetail;
         const { username, password } = req.body;
 
         const user = req.body.username;
@@ -33,6 +34,8 @@ router.post("/signup", async (req, res) => {
                 [username, user_password]
             );
             const fetchedUser = newUser.rows[0].username;
+            userDetail = newUser.rows[0];
+            console.log(userDetail);
             res.json({
                 message: "User created",
                 username: fetchedUser
@@ -43,6 +46,8 @@ router.post("/signup", async (req, res) => {
             });
             res.end();
         }
+        // res.status(201).json()
+        // console.log(token);
 
     } catch (error) {
         console.error(error.message);
@@ -61,6 +66,7 @@ router.post('/login', async (req, res) => {
             [username]
         );
         const fetchedUser = loggedUser.rows[0].username;
+        const fetchedUserId = loggedUser.rows[0].user_id;
         const fetchedPassword = loggedUser.rows[0].password;
         const comparePass = await bcrypt.compare(user_pass, fetchedPassword)
             .then((response) => {
@@ -68,8 +74,20 @@ router.post('/login', async (req, res) => {
             });
 
         if (fetchedUser && (comparePass == true)) {
+            // CREATE TOKEN
+            const token = jwt.sign(
+                { username: fetchedUser, user_id: fetchedUserId },
+                'secret_token_for_user',
+                {
+                    expiresIn: "15h"
+                }
+            );
+            res.setHeader("Token", token);
             res.status(200).json({
                 statusCode: 200,
+                user_id: fetchedUserId,
+                username: fetchedUser,
+                token: token,
                 message: "Logged in"
             });
             res.end();
