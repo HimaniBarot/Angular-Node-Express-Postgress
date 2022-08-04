@@ -18,7 +18,7 @@ export class ToDoService {
    * @returns Observable<ToDo[]>
    */
   public getToDoList(): Observable<ToDo[]> {
-    return this._http.get<any>(`${this._apiLink}/todos`);
+    return this._http.get<any>(`${this._apiLink}/user/todos`);
   }
 
   /**

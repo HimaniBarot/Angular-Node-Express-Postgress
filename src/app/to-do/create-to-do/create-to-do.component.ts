@@ -24,33 +24,32 @@ export class CreateToDoComponent implements OnInit {
   ngOnInit(): void {
     this.buildTodoForm();
     this.todo_id = this._activatedRoute.snapshot.params['id'];
+    this.getById();
   }
 
   buildTodoForm() {
     this.todoForm = this._fb.group({
-      id: [],
+      todo_id: [],
       description: ['']
     });
   }
 
   public addToDo() {
-    if (this.isAdd) this.createTodo();
-    this.updateTodo();
+    if (!this.isAdd) {
+      this.updateTodo();
+    } else {
+      this.createTodo();
+    }
   }
 
   public createTodo() {
-    this._todoService.addToDo(this.todoForm.value).subscribe((res) => {
+    this._todoService.addToDo(this.todoForm.value).subscribe(() => {
       this.todoList = this.todoForm.value;
       this._route.navigateByUrl("/todo");
-      console.log(res);
     });
   }
 
   getById() {
-    // this._todoService.getTodoById(this.todo_id).subscribe((res) => {
-
-    // })
-
     this.isAdd = !this.todo_id;
     if (!this.isAdd) {
       this._todoService
@@ -60,9 +59,12 @@ export class CreateToDoComponent implements OnInit {
   }
 
   public updateTodo() {
-    this._todoService.updateTodo(this.todo_id, this.todoForm.value).subscribe((res) => {
-      console.log(res);
-    });
+    this._todoService
+      .updateTodo(this.todo_id, this.todoForm.value)
+      .subscribe((res) => {
+        this._route.navigateByUrl("/todo");
+        console.log(res);
+      });
   }
 
 }
