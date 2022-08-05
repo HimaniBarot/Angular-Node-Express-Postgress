@@ -1,43 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateToDoComponent } from './create-to-do/create-to-do.component';
-import { HomeComponent } from './home/home.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
-import { ToDoComponent } from './to-do.component';
+
+import { AuthGuard } from '../core/auth/guard/auth.guard';
+import { CreateToDoComponent } from './components/create-to-do/create-to-do.component';
+import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      // {
-      //   path: '',
-      //   component: HomeComponent
-      // },
-      // {
-      //   path: 'home',
-      //   component: HomeComponent
-      // },
-      {
-        path: '',
-        component: ToDoListComponent
-      },
-      {
-        path: 'create-todo',
-        component: CreateToDoComponent
-      },
-      {
-        path: 'edit-todo/:id',
-        component: CreateToDoComponent
-      },
-    ]
+    path: 'todo-list',
+    component: ToDoListComponent
   },
-  // {
-  //   path: '', redirectTo: 'home', pathMatch: 'full'
-  // }
+  {
+    path: 'create-todo',
+    component: CreateToDoComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-todo/:id',
+    component: CreateToDoComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: '', redirectTo: 'todo-list', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class ToDoRoutingModule { }

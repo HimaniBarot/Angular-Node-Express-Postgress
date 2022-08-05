@@ -77,12 +77,12 @@ router.post('/login', async (req, res) => {
             // CREATE TOKEN
             const token = jwt.sign(
                 { username: fetchedUser, user_id: fetchedUserId },
-                'secret_token_for_user',
+                'secret_token_for_users_sfsfsfdfsdg',
                 {
                     expiresIn: "15h"
                 }
             );
-            res.setHeader("Token", token);
+            // res.setHeader("Authorization", token);
             res.status(200).json({
                 statusCode: 200,
                 user_id: fetchedUserId,

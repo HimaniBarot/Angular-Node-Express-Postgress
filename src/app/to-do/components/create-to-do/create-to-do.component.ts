@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToDo } from '../models/todo.model';
-import { ToDoService } from '../services/to-do.service';
+import { ToDo } from '../../models/todo.model';
+import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-create-to-do',

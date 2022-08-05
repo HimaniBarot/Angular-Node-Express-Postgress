@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth/services/auth.service';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MasterComponent } from './master/master.component';
+
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { MasterComponent } from './components/master/master.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,21 +18,24 @@ import { MasterComponent } from './master/master.component';
     SidebarComponent,
     SignupComponent,
     LoginComponent,
-    MasterComponent
+    MasterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
-    SignupComponent
+    SignupComponent,
+    PageNotFoundComponent
   ],
-  providers: [
-    AuthService
-  ]
+  // providers: [
+  //   AuthService
+  // ]
 })
 export class CoreModule { }

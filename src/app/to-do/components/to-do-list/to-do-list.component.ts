@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToDo } from '../models/todo.model';
-import { ToDoService } from '../services/to-do.service';
+import { ToDo } from '../../models/todo.model';
+import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-to-do-list',
@@ -27,7 +27,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   public editTodo(id: number) {
-    this._route.navigateByUrl(`/todo/edit-todo/${id}`);
+    this._route.navigateByUrl(`/master/edit-todo/${id}`);
   }
 
   // delete TODO

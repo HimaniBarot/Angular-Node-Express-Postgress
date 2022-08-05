@@ -27,19 +27,19 @@ export class ToDoService {
    * @returns Observable<ToDo[]>
    */
   public addToDo(todo: ToDo): Observable<ToDo> {
-    return this._http.post<any>(`${this._apiLink}/todos`, todo);
+    return this._http.post<any>(`${this._apiLink}/user/todos`, todo);
   }
 
   // get by id
   getTodoById(id: number): Observable<ToDo[]>{
-    return this._http.get<ToDo[]>(`${this._apiLink}/todos/${id}`)
+    return this._http.get<ToDo[]>(`${this._apiLink}/user/todos/${id}`)
   }
 
   public deleteTodo(todo_id: number): Observable<number> {
-    return this._http.delete<number>(`${this._apiLink}/todos/${todo_id}`);
+    return this._http.delete<number>(`${this._apiLink}/user/todos/${todo_id}`);
   }
 
   public updateTodo(id: number, todo: ToDo): Observable<any>{
-    return this._http.put<any>(`${this._apiLink}/todos/${id}`, todo);
+    return this._http.put<any>(`${this._apiLink}/user/todos/${id}`, todo);
   }
 }

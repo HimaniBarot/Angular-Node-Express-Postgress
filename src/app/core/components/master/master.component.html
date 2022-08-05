@@ -1,0 +1,14 @@
+<!-- <div class="container h-100">
+    <app-signup></app-signup>
+</div> -->
+<div class="h-100 overflow-hidden">
+    <app-header></app-header>
+    <div class="d-flex h-100">
+        <div>
+            <app-sidebar></app-sidebar>
+        </div>
+        <main class="container flex-grow-1 overflow-auto">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

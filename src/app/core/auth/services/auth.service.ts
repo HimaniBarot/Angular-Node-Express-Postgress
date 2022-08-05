@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../../models/user.model';
 
 @Injectable()
 export class AuthService {
 
   public apiLink: string;
+
+  private keysToRemove: Array<string> = ["token", "username"];
+  public isAuthenticated: boolean = false;
 
   constructor(private _http: HttpClient) {
     this.apiLink = "http://localhost:3000";
@@ -29,13 +32,21 @@ export class AuthService {
     localStorage.setItem("username", username);
   }
 
+  public setToken(token: string): any {
+    localStorage.setItem("token", token);
+  }
+
   /**
    * @name getUserName
    * @description get userName from localStorage
    * @return string | null
    */
-   public getUserName(): string | null {
+  public getUserName(): string | null {
     return localStorage.getItem("username");
+  }
+
+  public getToken(): string | null {
+    return localStorage.getItem("token");
   }
 
   /**
@@ -43,8 +54,10 @@ export class AuthService {
    * @description remove token from localStorage
    * @return void
    */
-   public clearLocalStorage(): void {
-      localStorage.removeItem("username")
+  public clearLocalStorage(): void {
+    this.keysToRemove.forEach(key =>
+      localStorage.removeItem(key)
+    )
   }
 
 }
