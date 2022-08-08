@@ -41,7 +41,7 @@ router.get("/todos/:id", async (req, res) => {
 });
 
 // update a todo
-router.put("/todos/:id", auth, async (req, res) => {
+router.put("/todos/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const { description } = req.body;
@@ -56,7 +56,7 @@ router.put("/todos/:id", auth, async (req, res) => {
 });
 
 // delete a todo
-router.delete("/todos/:id", auth, async (req, res) => {
+router.delete("/todos/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const deleteTodo = await pool.query(

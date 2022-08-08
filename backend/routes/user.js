@@ -68,6 +68,9 @@ router.post('/login', async (req, res) => {
         const fetchedUser = loggedUser.rows[0].username;
         const fetchedUserId = loggedUser.rows[0].user_id;
         const fetchedPassword = loggedUser.rows[0].password;
+
+        console.log(fetchedUserId, fetchedUser);
+
         const comparePass = await bcrypt.compare(user_pass, fetchedPassword)
             .then((response) => {
                 return response;
@@ -77,12 +80,13 @@ router.post('/login', async (req, res) => {
             // CREATE TOKEN
             const token = jwt.sign(
                 { username: fetchedUser, user_id: fetchedUserId },
-                'secret_token_for_users_sfsfsfdfsdg',
+                'top-secret-phrases',
                 {
-                    expiresIn: "15h"
+                    expiresIn: "24h"
                 }
             );
-            // res.setHeader("Authorization", token);
+            console.log(token);
+            // res.setHeader("Authorization", "Bearer" +" " +token);
             res.status(200).json({
                 statusCode: 200,
                 user_id: fetchedUserId,

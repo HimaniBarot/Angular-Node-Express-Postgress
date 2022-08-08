@@ -9,6 +9,7 @@ import { ToDoService } from './services/to-do.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     ToDoRoutingModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    SharedModule,
   ],
   exports: [
     ToDoComponent,

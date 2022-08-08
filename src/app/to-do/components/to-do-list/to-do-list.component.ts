@@ -12,6 +12,8 @@ export class ToDoListComponent implements OnInit {
 
   public todoList!: ToDo[];
   public isTodoList: boolean = false;
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = this.todoList;
 
   constructor(private _todoService: ToDoService, private _route: Router) { }
 

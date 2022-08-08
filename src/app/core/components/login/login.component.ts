@@ -13,12 +13,15 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
   public message: string = "";
   public username: string = "";
-  private _token: string = "";
+  private _token: string | null = "";
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
     this.buildTodoForm();
+    if (this._token == null) {
+      this._token = this._authService.getToken();
+    }
   }
 
   public buildTodoForm() {
@@ -33,11 +36,11 @@ export class LoginComponent implements OnInit {
     this._authService.userLogin(formValue).subscribe((res) => {
       this._token = res.token;
       if (this._token) {
-        this._authService.setToken(this._token);
-        this.username = this._authService.setUserName(res.username);
+        console.log(res);
+        this._authService.setToken(res.token);
         this._router.navigateByUrl("/master");
       }
-      return this.message = res.message;
+      // return this.message = res.message;
     })
   }
 
