@@ -6,7 +6,6 @@ import { AuthService } from '../../auth/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -14,6 +13,7 @@ export class LoginComponent implements OnInit {
   public message: string = "";
   public username: string = "";
   private _token: string | null = "";
+  hide = true;
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private _router: Router) { }
 
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       this._token = res.token;
       if (this._token) {
         console.log(res);
+        this._authService.setUserName(res.username);
         this._authService.setToken(res.token);
         this._router.navigateByUrl("/master");
       }

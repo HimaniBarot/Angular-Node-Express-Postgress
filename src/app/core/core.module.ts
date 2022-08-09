@@ -34,8 +34,5 @@ import { SharedModule } from '../shared/shared.module';
     SignupComponent,
     PageNotFoundComponent
   ],
-  // providers: [
-  //   AuthService
-  // ]
 })
 export class CoreModule { }

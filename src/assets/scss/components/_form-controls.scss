@@ -1,0 +1,31 @@
+.mat-form-field {
+    width: 100%;
+    // margin-left: 8px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: .75rem 0 0 0 !important;
+    background-color: #ededed !important;
+}
+
+.example-right-align {
+    text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.example-right-align {
+    -moz-appearance: textfield;
+}
+
+.mat-form-field-infix {
+    padding: 0 !important;
+}
+
+.mat-input-element {
+    font-size: 1rem !important;
+    padding: .875rem 0 !important;
+}

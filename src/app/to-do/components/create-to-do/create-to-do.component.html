@@ -1,7 +1,6 @@
-<form [formGroup]="todoForm" (ngSubmit)="addToDo()">
-    <!-- <div class="mb-4">
-        <input type="text" placeholder="Title" formControlName="description" />
-    </div> -->
+<!-- LOADER -->
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<!-- <form [formGroup]="todoForm" (ngSubmit)="addToDo()">
 
     <div class="mb-3 d-flex align-items-center justify-content-between">
         <div>
@@ -12,4 +11,20 @@
             <button class="btn btn-success" type="submit">ADD</button>
         </div>
       </div>
-</form>
+</form> -->
+
+<div class="h-100 w-100 d-flex flex-column align-items-center">
+    <h1 *ngIf="isAdd">ADD TODO</h1>
+    <h1 *ngIf="!isAdd">EDIT TODO</h1>
+    <form class="w-100" [formGroup]="todoForm" (ngSubmit)="addToDo()">
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description">
+        </mat-form-field>
+
+        <div class="d-flex justify-content-end">
+            <button mat-stroked-button color="primary" type="button" class="btn btn-cancel" routerLink="/master">CANCEL</button>
+            <button mat-raised-button color="primary" type="submit" class="btn">ADD</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+.header {
+    flex: 0 0 80px;
+    height: 80px;
+    background-color: rgb(119, 156, 181);
+}
+
+.active {
+    color: aquamarine;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+}
+
+.table-wrapper {
+    margin: 1rem 0;
+}
+
+.paginator {
+    margin-top: 1rem;
+}
+
+.form-wrapper {
+    width: 50%;
+    background-color: #ededed;
+    padding: 3rem;
+    border-radius: 12px;
+}

@@ -5,7 +5,7 @@ const auth = require("../middleware/auth");
 const router = express.Router();
 
 // add a todo
-router.post("/todos", auth, async (req, res) => {
+router.post("/todos", async (req, res) => {
     try {
         const { description } = req.body;
         const newTodo = await pool.query(

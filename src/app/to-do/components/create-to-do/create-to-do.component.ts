@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+// ------------------------------------------------------------ //
 import { ToDo } from '../../models/todo.model';
 import { ToDoService } from '../../services/to-do.service';
 
 @Component({
   selector: 'app-create-to-do',
   templateUrl: './create-to-do.component.html',
-  styleUrls: ['./create-to-do.component.scss']
 })
 export class CreateToDoComponent implements OnInit {
 
@@ -15,6 +15,7 @@ export class CreateToDoComponent implements OnInit {
   public todoList!: ToDo[];
   public todo_id!: number;
   public isAdd!: boolean;
+  public isLoading = false;
 
   constructor(private _todoService: ToDoService,
     private _fb: FormBuilder,
@@ -35,6 +36,7 @@ export class CreateToDoComponent implements OnInit {
   }
 
   public addToDo() {
+    this.isLoading = true;
     if (!this.isAdd) {
       this.updateTodo();
     } else {
@@ -45,7 +47,7 @@ export class CreateToDoComponent implements OnInit {
   public createTodo() {
     this._todoService.addToDo(this.todoForm.value).subscribe(() => {
       this.todoList = this.todoForm.value;
-      this._route.navigateByUrl("/todo");
+      this._route.navigateByUrl("master/todo-list");
     });
   }
 

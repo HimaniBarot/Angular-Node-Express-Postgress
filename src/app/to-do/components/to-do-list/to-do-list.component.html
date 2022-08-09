@@ -1,45 +1,40 @@
-<!-- <div class="h-100">
-    <button routerLink="../create-todo" class="btn btn-primary">CREATE</button>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Description</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let todo of todoList">
-                <th scope="row">{{ todo.todo_id }}</th>
-                <td>{{ todo.description }}</td>
-                <td>
-                    <button type="button" class="btn btn-warning me-2" (click)="editTodo(todo.todo_id)">EDIT</button>
-                    <button type="button" class="btn btn-danger" (click)="deleteTodo(todo.todo_id)">DELETE</button>
-                </td>
-            </tr>
-        </tbody>
+<div class="d-flex align-items-center justify-content-end">
+    <button mat-raised-button color="accent" routerLink="../create-todo" class="btn">CREATE</button>
+</div>
+<div class="table-wrapper h-100">
+    <!-- LOADER -->
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+    <table mat-table [dataSource]="todoList" class="mat-elevation-z8">
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="todo_id">
+            <th mat-header-cell *matHeaderCellDef> id </th>
+            <td mat-cell *matCellDef="let element"> {{element.todo_id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button type="button" color="primary" (click)="editTodo(element.todo_id)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button type="button" color="warn" (click)="deleteTodo(element.todo_id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-</div> -->
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
-  
+    <div class="paginator">
+        <mat-paginator [length]="totalList" [pageSize]="listPerPage" [pageSizeOptions]="pageSizeOptions"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

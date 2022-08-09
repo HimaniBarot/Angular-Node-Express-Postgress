@@ -6,7 +6,6 @@ import { AuthService } from '../../auth/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
@@ -17,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _authService: AuthService,
     private _router: Router,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.props();
@@ -32,28 +31,13 @@ export class HeaderComponent implements OnInit {
     this.username = this._authService.getUserName();
     const token = this._authService.getToken();
     console.log(token);
-    
+
     if (token) {
       this.isAuthenticated = true;
     }
     else {
       this.isAuthenticated = false;
     }
-
-    // this.isAuthenticated = this._authService.getIsAuth();
-    // this.authListenerSubs = this._authService.getAuthStatusListener()
-    // .subscribe((res) => {
-    //   console.log(res);
-      
-    //   this.isAuthenticated = res;
-    // });
-
-    // this._authService.isUserAuthenticated().subscribe((res) => {
-    //   console.log(res);
-    //   if(token){
-    //     this.isAuthenticated = res;
-    //   }
-    // });
   }
 
 }

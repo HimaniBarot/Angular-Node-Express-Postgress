@@ -6,11 +6,11 @@ import { AuthService } from '../../auth/services/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
 
   public signupForm!: FormGroup;
+  hide = true;
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private _router: Router) { }
 
