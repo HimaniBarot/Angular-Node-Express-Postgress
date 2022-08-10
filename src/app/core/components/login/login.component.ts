@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     this._authService.userLogin(formValue).subscribe((res) => {
       this._token = res.token;
       if (this._token) {
-        console.log(res);
         this._authService.setUserName(res.username);
         this._authService.setToken(res.token);
         this._router.navigateByUrl("/master");

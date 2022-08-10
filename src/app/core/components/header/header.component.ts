@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
   public props() {
     this.username = this._authService.getUserName();
     const token = this._authService.getToken();
-    console.log(token);
 
     if (token) {
       this.isAuthenticated = true;

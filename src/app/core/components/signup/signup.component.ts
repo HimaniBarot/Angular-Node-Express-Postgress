@@ -27,8 +27,7 @@ export class SignupComponent implements OnInit {
   }
 
   public onSignup() {
-    this._authService.addUser(this.signupForm.value).subscribe((res) => {
-      console.log(res);
+    this._authService.addUser(this.signupForm.value).subscribe(() => {
       this._router.navigateByUrl("/login");
     })
   }

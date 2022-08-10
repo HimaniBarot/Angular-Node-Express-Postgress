@@ -63,9 +63,8 @@ export class CreateToDoComponent implements OnInit {
   public updateTodo() {
     this._todoService
       .updateTodo(this.todo_id, this.todoForm.value)
-      .subscribe((res) => {
+      .subscribe(() => {
         this._route.navigateByUrl("/todo");
-        console.log(res);
       });
   }
 

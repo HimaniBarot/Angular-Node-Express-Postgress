@@ -9,6 +9,7 @@ import { AuthService } from './core/auth/services/auth.service';
 import { CoreModule } from './core/core.module';
 import { ToDoModule } from './to-do/to-do.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     ToDoModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

@@ -41,7 +41,6 @@ export class ToDoListComponent implements OnInit {
   public deleteTodo(id: number) {
     this._todoService.deleteTodo(id).subscribe((res) => {
       this.todoList.splice(id - 1, 1);
-      console.log('data deleted', res);
       this.getToDoList();
     });
   }
