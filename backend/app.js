@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const USER_ROUTES = require("./routes/user");
 const TODO_ROUTES = require("./routes/todo");
+const FILE_ROUTES = require("./routes/files");
 // const token = require("./middleware/auth");
 
 // middleware
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use("", USER_ROUTES);
 app.use("", TODO_ROUTES);
+app.use("", FILE_ROUTES);
 // app.use("", token);
 
 app.listen(3000); // listens for requests

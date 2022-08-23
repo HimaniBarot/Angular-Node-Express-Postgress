@@ -5,7 +5,8 @@
             <span class="example-spacer"></span>
             <a class="nav-link me-3 text-white" routerLink="/login" *ngIf="!isAuthenticated">LOGIN</a>
             <a class="nav-link me-3 text-white" routerLink="/signup" *ngIf="!isAuthenticated">SIGNUP</a>
-            <a mat-button color="" routerLink="todo-list" *ngIf="isAuthenticated">TODO</a>
+            <a mat-button routerLink="todo-list" *ngIf="isAuthenticated">TODO</a>
+            <a mat-button routerLink="file-upload" *ngIf="isAuthenticated">File Upload</a>
             <button mat-flat-button type="submit" (click)="onLogout()" *ngIf="isAuthenticated">LOGOUT</button>
         </mat-toolbar-row>
     </mat-toolbar>

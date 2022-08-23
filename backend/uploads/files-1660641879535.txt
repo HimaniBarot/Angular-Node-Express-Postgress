@@ -1,0 +1,16 @@
+ALTER TABLE userdetails
+ADD COLUMN token VARCHAR(50);
+
+
+INSERT INTO userdata (username, password) VALUES(Test33, abcd) RETURNING * UNIQUE(username);
+
+
+IF NOT EXISTS (SELECT * FROM userdata WHERE username = Test2233)
+INSERT INTO userdata (username) VALUES (Test2233);
+
+
+CREATE TABLE userdetails (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 255 ) UNIQUE NOT NULL,
+	password VARCHAR ( 255 ) NOT NULL
+);

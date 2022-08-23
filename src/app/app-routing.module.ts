@@ -18,9 +18,12 @@ const routes: Routes = [
     path: 'master', component: MasterComponent,
     children: [
       {
-        path: '',
+        path: 'todo',
         loadChildren: () => import('./to-do/to-do.module').then(m => m.ToDoModule),
-
+      },
+      {
+        path: 'file-upload',
+        loadChildren: () => import('./file-upload/file-upload.module').then(m => m.FileUploadModule),
       }
     ]
   },
